@@ -1,5 +1,10 @@
 module github.com/ipfs/go-ipfs
 
+replace (
+	github.com/ipfs/go-bitswap v0.4.0 => github.com/Matias-Correia/go-bitswap v0.4.0-dd20bcebbc6d6bd38588098964ff628f7d233c1e
+	github.com/ipfs/go-ipfs-config v0.16.0 => github.com/Matias-Correia/go-ipfs-config v0.16.0-5cd7017b3386c9c50cda1a8374e9c120b0d7b19f
+)
+
 require (
 	bazil.org/fuse v0.0.0-20200117225306-7b5117fecadc
 	contrib.go.opencensus.io/exporter/prometheus v0.3.0

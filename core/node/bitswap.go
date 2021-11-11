@@ -2,6 +2,7 @@ package node
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/ipfs/go-bitswap"
 	"github.com/ipfs/go-bitswap/network"
@@ -21,6 +22,9 @@ const (
 	DefaultTaskWorkerCount             = 8
 	DefaultEngineTaskWorkerCount       = 8
 	DefaultMaxOutstandingBytesPerPeer  = 1 << 20
+	DefaultProviderMode				   = 1
+	DefaultServerAddress			   = "localhost:50051"	
+	DefaultSessionAvgLatencyThreshold  = time.ParseDuration("300ms")
 )
 
 // OnlineExchange creates new LibP2P backed block exchange (BitSwap)
@@ -32,6 +36,18 @@ func OnlineExchange(cfg *config.Config, provide bool) interface{} {
 		if cfg.Internal.Bitswap != nil {
 			internalBsCfg = *cfg.Internal.Bitswap
 		}
+		var providerSMode int = DefaultProviderMode
+		if internalBsCfg.ProviderSelectionMode != nil{
+			providerSMode = int(internalBsCfg.ProviderSelectionMode)
+		}
+		var serveraddr string = DefaultServerAddress
+		if internalBsCfg.ServerAddress != nil {
+			serveraddr = internalBsCfg.ServerAddress
+		}
+		var sessionavglatthreshold time.Duration = DefaultSessionAvgLatencyThreshold
+		if internalBsCfg.SessionAvgLatencyThreshold != nil{
+			sessionavglatthreshold = time.ParseDuration(strconv.Itoa(int(internalBsCfg.SessionAvgLatencyThreshold))+"ms")
+		}
 
 		opts := []bitswap.Option{
 			bitswap.ProvideEnabled(provide),
@@ -39,8 +55,10 @@ func OnlineExchange(cfg *config.Config, provide bool) interface{} {
 			bitswap.TaskWorkerCount(int(internalBsCfg.TaskWorkerCount.WithDefault(DefaultTaskWorkerCount))),
 			bitswap.EngineTaskWorkerCount(int(internalBsCfg.EngineTaskWorkerCount.WithDefault(DefaultEngineTaskWorkerCount))),
 			bitswap.MaxOutstandingBytesPerPeer(int(internalBsCfg.MaxOutstandingBytesPerPeer.WithDefault(DefaultMaxOutstandingBytesPerPeer))),
+			//bitswap.ProviderSelectionMode(int(internalBsCfg.ProviderSelectionMode.WithDefault(DefaultProviderMode)))
+			//bitswap.ServerAddress(serveraddr)
 		}
-		exch := bitswap.New(helpers.LifecycleCtx(mctx, lc), bitswapNetwork, bs, opts...)
+		exch := bitswap.New(helpers.LifecycleCtx(mctx, lc), bitswapNetwork, bs, providerSMode, serveraddr, sessionavglatthreshold, opts...)
 		lc.Append(fx.Hook{
 			OnStop: func(ctx context.Context) error {
 				return exch.Close()
