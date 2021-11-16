@@ -1,8 +1,8 @@
 module github.com/ipfs/go-ipfs
 
 replace (
-	github.com/ipfs/go-bitswap v0.4.0 => github.com/Matias-Correia/go-bitswap v0.4.0-dd20bcebbc6d6bd38588098964ff628f7d233c1e
-	github.com/ipfs/go-ipfs-config v0.16.0 => github.com/Matias-Correia/go-ipfs-config v0.16.0-5cd7017b3386c9c50cda1a8374e9c120b0d7b19f
+	github.com/ipfs/go-bitswap v0.4.0 => github.com/Matias-Correia/go-bitswap v0.4.1-0.20211111170443-dd20bcebbc6d
+	github.com/ipfs/go-ipfs-config v0.16.0 => github.com/Matias-Correia/go-ipfs-config v0.16.1-0.20211111123009-5cd7017b3386
 )
 
 require (
@@ -113,7 +113,6 @@ require (
 	go.uber.org/fx v1.13.1
 	go.uber.org/zap v1.19.0
 	golang.org/x/crypto v0.0.0-20210813211128-0a44fdfbc16e
-	golang.org/x/lint v0.0.0-20201208152925-83fdc39ff7b5 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/sys v0.0.0-20210816183151-1e6c022a8912
 )
