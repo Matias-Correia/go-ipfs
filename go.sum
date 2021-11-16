@@ -57,8 +57,8 @@ github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym
 github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible/go.mod h1:r7JcOSlj0wfOMncg0iLm8Leh48TZaKVeNIfJntJ2wa0=
 github.com/Kubuxu/go-os-helper v0.0.1 h1:EJiD2VUQyh5A9hWJLmc6iWg6yIcJ7jpBcwC8GMGXfDk=
 github.com/Kubuxu/go-os-helper v0.0.1/go.mod h1:N8B+I7vPCT80IcP58r50u4+gEEcsZETFUpAzWW2ep1Y=
-github.com/Matias-Correia/go-bitswap v0.4.1-0.20211111170443-dd20bcebbc6d h1:g1fde6O04QNBHcrvenWbth9v01Kin4MHv3InH/rnQCU=
-github.com/Matias-Correia/go-bitswap v0.4.1-0.20211111170443-dd20bcebbc6d/go.mod h1:QuZlhOWQDE0/Q3MOPvcJG23DvqA4XY1t1Po+OhOxxBg=
+github.com/Matias-Correia/go-bitswap v0.4.1-0.20211116162159-902c079eecc3 h1:s5qa8AxZFtiwQMyWoYb6KP+Vplh1OEpimFUbEdGgdhA=
+github.com/Matias-Correia/go-bitswap v0.4.1-0.20211116162159-902c079eecc3/go.mod h1:QuZlhOWQDE0/Q3MOPvcJG23DvqA4XY1t1Po+OhOxxBg=
 github.com/Matias-Correia/go-ipfs-config v0.16.1-0.20211111123009-5cd7017b3386 h1:BfNoiFKuMOv9thVdiD7fbca6Bc1Gp1yhkv4KSdA9CW8=
 github.com/Matias-Correia/go-ipfs-config v0.16.1-0.20211111123009-5cd7017b3386/go.mod h1:wz2lKzOjgJeYJa6zx8W9VT7mz+iSd0laBMqS/9wmX6A=
 github.com/Matias-Correia/go-test_server/server v0.0.0-20210929183858-9f8dded63c79 h1:IMuqQFvqlFAnNZuIv95i/Kj7X8Hr5sM6thaY7JcbXQc=
