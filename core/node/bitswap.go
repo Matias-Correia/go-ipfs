@@ -30,19 +30,21 @@ const (
 // OnlineExchange creates new LibP2P backed block exchange (BitSwap)
 func OnlineExchange(cfg *config.Config, provide bool) interface{} {
 	return func(mctx helpers.MetricsCtx, lc fx.Lifecycle, host host.Host, rt routing.Routing, bs blockstore.GCBlockstore) exchange.Interface {
-		bitswapNetwork := network.NewFromIpfsHost(host, rt)
-
+		
 		var internalBsCfg config.InternalBitswap
 		if cfg.Internal.Bitswap != nil {
 			internalBsCfg = *cfg.Internal.Bitswap
 		}
-		var providerSMode int = DefaultProviderMode
-		if internalBsCfg.ProviderSelectionMode != nil{
-			providerSMode = int(internalBsCfg.ProviderSelectionMode)
-		}
 		var serveraddr string = DefaultServerAddress
 		if internalBsCfg.ServerAddress != nil {
 			serveraddr = internalBsCfg.ServerAddress
+		}
+		
+		bitswapNetwork := network.NewFromIpfsHost(host, rt, serveraddr)
+
+		var providerSMode int = DefaultProviderMode
+		if internalBsCfg.ProviderSelectionMode != nil{
+			providerSMode = int(internalBsCfg.ProviderSelectionMode)
 		}
 		var sessionavglatthreshold time.Duration = DefaultSessionAvgLatencyThreshold
 		if internalBsCfg.SessionAvgLatencyThreshold != nil{
