@@ -44,7 +44,7 @@ func OnlineExchange(cfg *config.Config, provide bool) interface{} {
 		bitswapNetwork := network.NewFromIpfsHost(host, rt, serveraddr)
 
 		var providerSMode int = DefaultProviderMode
-		if internalBsCfg.ProviderSelectionMode.WithDefault(DefaultProviderMode) != nil{
+		if int(internalBsCfg.ProviderSelectionMode.WithDefault(DefaultProviderMode)) != 0{
 			providerSMode = int(internalBsCfg.ProviderSelectionMode.WithDefault(DefaultProviderMode))
 		}
 		sessionavglatthreshold, _ := time.ParseDuration("300ms")
