@@ -25,7 +25,7 @@ const (
 	DefaultMaxOutstandingBytesPerPeer  = 1 << 20
 	DefaultProviderMode				   = 1
 	DefaultServerAddress			   = "localhost:50051"	
-	DefaultSessionAvgLatencyThreshold  = time.ParseDuration("300ms")
+	//DefaultSessionAvgLatencyThreshold  = time.ParseDuration("300ms")
 )
 
 // OnlineExchange creates new LibP2P backed block exchange (BitSwap)
@@ -44,12 +44,12 @@ func OnlineExchange(cfg *config.Config, provide bool) interface{} {
 		bitswapNetwork := network.NewFromIpfsHost(host, rt, serveraddr)
 
 		var providerSMode int = DefaultProviderMode
-		if internalBsCfg.ProviderSelectionMode.value != nil{
-			providerSMode = int(internalBsCfg.ProviderSelectionMode.value)
+		if internalBsCfg.ProviderSelectionMode.WithDefault(DefaultProviderMode) != nil{
+			providerSMode = int(internalBsCfg.ProviderSelectionMode.WithDefault(DefaultProviderMode))
 		}
-		var sessionavglatthreshold time.Duration = DefaultSessionAvgLatencyThreshold
+		sessionavglatthreshold, _ := time.ParseDuration("300ms")
 		if internalBsCfg.SessionAvgLatencyThreshold != 0{
-			sessionavglatthreshold = time.ParseDuration(strconv.Itoa(int(internalBsCfg.SessionAvgLatencyThreshold))+"ms")
+			sessionavglatthreshold, _ = time.ParseDuration(strconv.Itoa(int(internalBsCfg.SessionAvgLatencyThreshold))+"ms")
 		}
 
 		opts := []bitswap.Option{
