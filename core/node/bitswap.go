@@ -3,6 +3,7 @@ package node
 import (
 	"context"
 	"strconv"
+	"time"
 
 	"github.com/ipfs/go-bitswap"
 	"github.com/ipfs/go-bitswap/network"
@@ -36,18 +37,18 @@ func OnlineExchange(cfg *config.Config, provide bool) interface{} {
 			internalBsCfg = *cfg.Internal.Bitswap
 		}
 		var serveraddr string = DefaultServerAddress
-		if internalBsCfg.ServerAddress != nil {
+		if internalBsCfg.ServerAddress != "" {
 			serveraddr = internalBsCfg.ServerAddress
 		}
 		
 		bitswapNetwork := network.NewFromIpfsHost(host, rt, serveraddr)
 
 		var providerSMode int = DefaultProviderMode
-		if internalBsCfg.ProviderSelectionMode != nil{
-			providerSMode = int(internalBsCfg.ProviderSelectionMode)
+		if internalBsCfg.ProviderSelectionMode.value != nil{
+			providerSMode = int(internalBsCfg.ProviderSelectionMode.value)
 		}
 		var sessionavglatthreshold time.Duration = DefaultSessionAvgLatencyThreshold
-		if internalBsCfg.SessionAvgLatencyThreshold != nil{
+		if internalBsCfg.SessionAvgLatencyThreshold != 0{
 			sessionavglatthreshold = time.ParseDuration(strconv.Itoa(int(internalBsCfg.SessionAvgLatencyThreshold))+"ms")
 		}
 
