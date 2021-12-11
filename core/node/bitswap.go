@@ -15,6 +15,8 @@ import (
 	"go.uber.org/fx"
 
 	"github.com/ipfs/go-ipfs/core/node/helpers"
+
+	grpc "github.com/ipfs/go-bitswap/grpc"
 )
 
 const (
@@ -41,7 +43,9 @@ func OnlineExchange(cfg *config.Config, provide bool) interface{} {
 			serveraddr = internalBsCfg.ServerAddress
 		}
 		
-		bitswapNetwork := network.NewFromIpfsHost(host, rt, serveraddr)
+		gw := grpc.New(serveraddr)
+
+		bitswapNetwork := network.NewFromIpfsHost(host, rt, serveraddr, gw.GetChan())
 
 		var providerSMode int = DefaultProviderMode
 		if int(internalBsCfg.ProviderSelectionMode.WithDefault(DefaultProviderMode)) != 0{
@@ -61,7 +65,7 @@ func OnlineExchange(cfg *config.Config, provide bool) interface{} {
 			//bitswap.ProviderSelectionMode(int(internalBsCfg.ProviderSelectionMode.WithDefault(DefaultProviderMode)))
 			//bitswap.ServerAddress(serveraddr)
 		}
-		exch := bitswap.New(helpers.LifecycleCtx(mctx, lc), bitswapNetwork, bs, providerSMode, serveraddr, sessionavglatthreshold, opts...)
+		exch := bitswap.New(helpers.LifecycleCtx(mctx, lc), bitswapNetwork, bs, providerSMode, serveraddr, sessionavglatthreshold, gw, opts...)
 		lc.Append(fx.Hook{
 			OnStop: func(ctx context.Context) error {
 				return exch.Close()
