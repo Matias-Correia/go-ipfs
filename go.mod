@@ -1,7 +1,7 @@
 module github.com/ipfs/go-ipfs
 
 replace (
-	github.com/ipfs/go-bitswap v0.4.0 => github.com/Matias-Correia/go-bitswap v0.4.1-0.20211211190452-39a2ac4db888
+	github.com/ipfs/go-bitswap v0.4.0 => github.com/Matias-Correia/go-bitswap v0.4.1-0.20211211190754-1ca3fb5c2253
 	github.com/ipfs/go-ipfs-config v0.16.0 => github.com/Matias-Correia/go-ipfs-config v0.16.1-0.20211111123009-5cd7017b3386
 )
 
