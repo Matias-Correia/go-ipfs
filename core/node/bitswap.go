@@ -16,7 +16,7 @@ import (
 
 	"github.com/ipfs/go-ipfs/core/node/helpers"
 
-	grpc "github.com/ipfs/go-bitswap/grpc"
+	logrpc "github.com/ipfs/go-bitswap/logrpc"
 )
 
 const (
@@ -43,7 +43,7 @@ func OnlineExchange(cfg *config.Config, provide bool) interface{} {
 			serveraddr = internalBsCfg.ServerAddress
 		}
 		
-		gw := grpc.New(serveraddr)
+		gw := logrpc.New(serveraddr)
 
 		bitswapNetwork := network.NewFromIpfsHost(host, rt, serveraddr, gw.GetChan())
 
