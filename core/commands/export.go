@@ -1,17 +1,9 @@
 package commands
 
 import (
-	"context"
-	"fmt"
-	"io"
-	"os"
-
-	"github.com/ipfs/go-ipfs/core/commands/cmdenv"
 	bitswap "github.com/ipfs/go-bitswap"
-	"github.com/ipfs/go-ipfs-cmds"
-	"github.com/ipfs/go-ipfs-files"
-	"github.com/ipfs/interface-go-ipfs-core"
-	"github.com/ipfs/interface-go-ipfs-core/path"
+	cmds "github.com/ipfs/go-ipfs-cmds"
+	"github.com/ipfs/go-ipfs/core/commands/cmdenv"
 )
 
 var ExportCmd = &cmds.Command{
@@ -21,16 +13,16 @@ var ExportCmd = &cmds.Command{
 	},
 
 	Arguments: []cmds.Argument{},
-	Options: []cmds.Option{},
-	Run: func(env cmds.Environment) {
+	Options:   []cmds.Option{},
+	Run: func(env cmds.Environment) error {
 		node, err := cmdenv.GetNode(env)
 		if err != nil {
 			return err
 		}
 
 		bs := node.Exchange.(*bitswap.Bitswap)
-		
-		bs.Export()
 
+		bs.Export()
+		return nil
 	},
 }
