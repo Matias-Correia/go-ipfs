@@ -107,6 +107,8 @@ github.com/Matias-Correia/go-bitswap v0.4.1-0.20220325163727-9e9e71536d80 h1:hds
 github.com/Matias-Correia/go-bitswap v0.4.1-0.20220325163727-9e9e71536d80/go.mod h1:QuZlhOWQDE0/Q3MOPvcJG23DvqA4XY1t1Po+OhOxxBg=
 github.com/Matias-Correia/go-bitswap v0.4.1-0.20220329114314-99a2e6f069af h1:83IvB380Yf0GZSlRNCy1yG7RkdMxOtghwKvK5hvxSrw=
 github.com/Matias-Correia/go-bitswap v0.4.1-0.20220329114314-99a2e6f069af/go.mod h1:QuZlhOWQDE0/Q3MOPvcJG23DvqA4XY1t1Po+OhOxxBg=
+github.com/Matias-Correia/go-bitswap v0.4.1-0.20220331113745-63405e31366c h1:qWJOKw1Vs8lOwbQfzlnGXJj1ptm0OEaixqhLjB7KcDw=
+github.com/Matias-Correia/go-bitswap v0.4.1-0.20220331113745-63405e31366c/go.mod h1:QuZlhOWQDE0/Q3MOPvcJG23DvqA4XY1t1Po+OhOxxBg=
 github.com/Matias-Correia/go-ipfs-config v0.16.1-0.20211111123009-5cd7017b3386 h1:BfNoiFKuMOv9thVdiD7fbca6Bc1Gp1yhkv4KSdA9CW8=
 github.com/Matias-Correia/go-ipfs-config v0.16.1-0.20211111123009-5cd7017b3386/go.mod h1:wz2lKzOjgJeYJa6zx8W9VT7mz+iSd0laBMqS/9wmX6A=
 github.com/Matias-Correia/go-test_server/server v0.0.0-20210929183858-9f8dded63c79 h1:IMuqQFvqlFAnNZuIv95i/Kj7X8Hr5sM6thaY7JcbXQc=
