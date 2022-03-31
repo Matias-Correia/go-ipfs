@@ -14,7 +14,7 @@ var ExportCmd = &cmds.Command{
 
 	Arguments: []cmds.Argument{},
 	Options:   []cmds.Option{},
-	Run: func(env cmds.Environment) error {
+	Run: func(req *cmds.Request, res cmds.ResponseEmitter, env cmds.Environment) error {
 		node, err := cmdenv.GetNode(env)
 		if err != nil {
 			return err
