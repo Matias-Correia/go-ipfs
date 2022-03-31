@@ -38,7 +38,7 @@ BASIC COMMANDS
   get <ref>     Download IPFS objects
   ls <ref>      List links from an object
   refs <ref>    List hashes of links from an object
-  export		Exports the logs stored during the execution of IPFS to the database
+  export        Exports the logs stored during the execution of IPFS to the database
 
 DATA STRUCTURE COMMANDS
   dag           Interact with IPLD DAG nodes
